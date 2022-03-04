@@ -15,48 +15,7 @@ import { SearchBar,search } from 'react-native-elements';
 
 function Site () {
 
-  const Dte = () => {
-    return  [dataSource, setDataSource] = useState([]);
-  }
-  const Sites = () => {
-   
-    
-  
-    useEffect(() => {
-      let items = Array.apply(null, Array(60)).map((v, i) => {
-        return {
-          id: i,
-          src: 'https://picsum.photos/1440/2842?random=' + (i + 1)
-        };
-      });
-      setDataSource(items);
-    }, []);
-  
-    return (
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={dataSource}
-          ListHeaderComponent={ListHeader}
-          renderItem={({item}) => (
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'column',
-                margin: 1
-              }}>
-              <Image
-                style={styles.imageThumbnail}
-                source={{uri: item.src}}
-              />
-            </View>
-          )}
-          //Setting the number of column
-          numColumns={3}
-          keyExtractor={(item, index) => index}
-        />
-      </SafeAreaView>
-    );
-  }
+ 
 }
 
 

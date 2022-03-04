@@ -2,33 +2,33 @@ import * as React from 'react';
 import {View, Text, ScrollView, StyleSheet, Alert} from 'react-native';
 import { RadioButton, Button } from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import {atom,useAtom} from 'jotai';
 
-
-
+export const host4Atom = atom('');
 const Host4 = () => {
   const [value, setValue] = React.useState('first');
+  const [,setHost4Atom] = useAtom(host4Atom);
   const navigation = useNavigation();
 
   const onNextPress = () => {
-      return navigation.navigate('Host5')
+    setHost4Atom(value);
+      return navigation.navigate('Host6')
   } 
 
   const onBackPress = () => {
-      return navigation.navigate('Host3')
+      return navigation.navigate('Host2')
   }
 
   return (
     <ScrollView>
         <View style={styles.root}>
-        <Text style={{fontSize: 24, alignSelf: 'center'}}>Enter your address</Text>
+        <Text style={{fontSize: 24, alignSelf: 'center'}}>Type of business complex</Text>
 
                        <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
-                              <RadioButton.Item label="First item" value="first" />
-                              <RadioButton.Item label="Second item" value="second" />
-                              <RadioButton.Item label="Third item" value="third" />
-                              <RadioButton.Item label="Fourth item" value="fourth" />
-                              <RadioButton.Item label="Fifth item" value="fifth" />
-                        <RadioButton.Item label="Sixth item" value="sixth" />
+                              <RadioButton.Item label="Frame" value="Frame" />
+                              <RadioButton.Item label="Apartment/House space" value="Apartment/House space" />
+                              <RadioButton.Item label="To-let space" value="To-let space" />
+                              
                       </RadioButton.Group>
 
 

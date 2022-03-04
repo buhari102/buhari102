@@ -84,7 +84,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 import ResidentialScreen from '../../../srcC/residentialScreen';
-import CommercialScreen from '../../../srcC/shortStayScreen';
+import CommercialScreen from '../../../srcC/commercialScreen';
 import ShortStayScreen from '../../../srcC/shortStayScreen';
 import ThinkingScreen from '../../../srcC/thinkingScreen';
 import Search from '../../../srcB/components/screens/Search';
@@ -127,7 +127,7 @@ export default function App() {
 
 
         <Tab.Screen name="Home" component={ResidentialScreen} />
-        <Tab.Screen name="Search" component={Search} />
+        <Tab.Screen name="Search" component={CommercialScreen} />
         <Tab.Screen name="Notifications" component={ShortStayScreen} />
         <Tab.Screen name="Menu" component={ThinkingScreen} />
       </Tab.Navigator>

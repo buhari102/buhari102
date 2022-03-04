@@ -1,4 +1,4 @@
-/*// import React in our code
+// import React in our code
 import React, {useEffect,useState} from 'react';
 
 // import all the components we are going to use
@@ -11,6 +11,7 @@ import {
   Text
 } from 'react-native';
 import { SearchBar,search } from 'react-native-elements';
+import SearchBox from '../srcB/components/screenComponents/SearchBox';
 
 const ListHeader = () => {
      
@@ -22,22 +23,12 @@ const ListHeader = () => {
 return (
   <SafeAreaView> 
 <View style={styles.headerFooterStyle}>
-  <Text style={styles.textStyle}>Commercial</Text>
+  
   
 </View>
 
 <View>
-<SearchBar 
-  placeholder="Search"
-  onChangeText={this.updateSearch}
-  value={search}
-  containerStyle={{backgroundColor: 'white', borderWidth: 1, borderRadius: 5}}
-  inputStyle={{backgroundColor: 'white'}}
-  placeholderTextColor={'#g5g5g5'}
-  searchIcon = {{type: 'Ionicons', color: '#86939e', name: 'Search' }}
-  clearIcon={{type: 'Ionicons', color: '#86939e', name: 'Search'  }}
-  inputContainerStyle={{backgroundColor: 'white', borderWidth: 1, borderRadius: 9}}
-/>
+<SearchBox/>
 </View>
  
 </SafeAreaView>
@@ -96,9 +87,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 100,
   },
-}); */
+}); 
 
-import React, {useState} from 'react';
+/*import React, {useState} from 'react';
 import {
   View,
   StatusBar,
@@ -208,4 +199,4 @@ const CommercialScreen = () => {
   );
 };
 
-export default CommercialScreen;
+export default CommercialScreen;*/

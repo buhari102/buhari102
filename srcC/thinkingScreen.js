@@ -6,6 +6,7 @@ import { refreshAtom,tokenAtom } from '../src/screens/SignInScreen/SignInScreen'
 import { NavigationContainer } from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 import { roleAtom } from '../src/screens/SignInScreen/SignInScreen';
+import urls from '../API/urls';
 
 
 const ThinkingScreen = () => {
@@ -17,7 +18,7 @@ const ThinkingScreen = () => {
  
   console.log(token)
   const onSubmitPressed = () => {
-    fetch('http://localhost:8080/api/auth/sign-out', {
+    fetch(urls.logout, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {

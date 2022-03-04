@@ -2,32 +2,46 @@ import * as React from 'react';
 import {View, Text, ScrollView, StyleSheet, Alert} from 'react-native';
 import { RadioButton, Button } from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import {atom,useAtom} from 'jotai';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import CustomInput from '../../src/components/CustomInput';
 
+export const host7Atom = atom('');
 const Host7 = () => {
   const [value, setValue] = React.useState('first');
+  const [sizeland, setSizeland] = React.useState('');
+  const [priceland, setPriceland] = React.useState('');
+
+  const [,setHost7Atom] = useAtom(host7Atom);
   const navigation = useNavigation();
 
   const onNextPress = () => {
-      return navigation.navigate('Host8')
+    setHost7Atom(value);
+      return navigation.navigate('Host10')
   } 
 
   const onBackPress = () => {
-      return navigation.navigate('Host6')
+      return navigation.navigate('Host2')
   }
 
   return (
     <ScrollView>
         <View style={styles.root}>
-        <Text style={{fontSize: 24, alignSelf: 'center'}}>Add some photos of your place</Text>
+        <Text style={{fontSize: 24, alignSelf: 'center'}}>Description of land</Text>
 
-                       <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
-                              <RadioButton.Item label="First item" value="first" />
-                              <RadioButton.Item label="Second item" value="second" />
-                              <RadioButton.Item label="Third item" value="third" />
-                              <RadioButton.Item label="Fourth item" value="fourth" />
-                              <RadioButton.Item label="Fifth item" value="fifth" />
-                        <RadioButton.Item label="Sixth item" value="sixth" />
-                      </RadioButton.Group>
+                       
+        <CustomInput
+          placeholder="Size of land"
+          value={sizeland}
+          setValue={setSizeland}
+        />
+        
+        <CustomInput
+          placeholder="Number of bathrooms"
+          value={priceland}
+          setValue={setPriceland}
+          
+        />
 
 
                       <Button style={styles.buttona}  mode="contained" onPress={onNextPress} >
@@ -45,20 +59,12 @@ const Host7 = () => {
 };
 
 const styles = StyleSheet.create({
-  buttona: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-  },
-  buttonb: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-  },
+ 
   root: {
-      alignItems: 'flex-start',
-      padding: 20,
-      flex: 1
+    alignItems: 'center',
+    padding: 20,
+    height: hp('60%'), // 70% of height device screen
+    width: wp('100%')
       
     }
 })

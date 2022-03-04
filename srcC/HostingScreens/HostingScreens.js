@@ -14,6 +14,9 @@ import Host8 from './Host8';
 import Host9 from './Host9';
 import Host10 from './Host10';
 import Host11 from './Host11';
+import Host12 from './Host12';
+import Host13 from './Host13';
+import Host14 from './Host14';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +35,9 @@ const HostingScreens = () => {
         <Stack.Screen name="Host9" component={Host9} />
         <Stack.Screen name="Host10" component={Host10} />
         <Stack.Screen name="Host11" component={Host11} />
+        <Stack.Screen name="Host12" component={Host12} />
+        <Stack.Screen name="Host13" component={Host13} />
+        <Stack.Screen name="Host14" component={Host14} />
       </Stack.Navigator>
     
   );
