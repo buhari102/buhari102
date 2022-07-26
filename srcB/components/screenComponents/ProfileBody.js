@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, useEffect} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
 import { roleAtom } from '../../../src/screens/SignInScreen/SignInScreen';
@@ -18,11 +18,15 @@ export const ProfileBody = ({
   const [role] = useAtom(roleAtom);
   const [dp] = useAtom(dpAtom);
   console.log(dp)
+  const [data, setData] = useState('');
+  console.log('data' + <pic/>)
   //const dpAtom = atom('');
   //const [,setdpAtom] = useAtom(dpAtom);
 
     const navigation = useNavigation();
-  
+
+    
+   
 
   const onProfilePress = () => {
     
@@ -79,6 +83,8 @@ export const ProfileBody = ({
       });
 
     }    
+
+
     
    
  }

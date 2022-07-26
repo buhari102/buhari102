@@ -2,24 +2,28 @@ import * as React from 'react';
 import {View, Text, ScrollView, StyleSheet, Alert} from 'react-native';
 import { RadioButton, Button } from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import {atom,useAtom} from 'jotai';
 
 
+export const host9Atom = atom('');
 const Host9 = () => {
   const [value, setValue] = React.useState('first');
+  const [,setHost9Atom] = useAtom(host9Atom);
   const navigation = useNavigation();
 
   const onNextPress = () => {
-      return navigation.navigate('Host10')
+    setHost9Atom(value);
+      return navigation.navigate('Host12')
   } 
 
   const onBackPress = () => {
-      return navigation.navigate('Host8')
+      return navigation.navigate('Host6')
   }
 
   return (
     <ScrollView>
         <View style={styles.root}>
-        <Text style={{fontSize: 24, alignSelf: 'center'}}>Now lets describe your place</Text>
+        <Text style={{fontSize: 24, alignSelf: 'center'}}>Pictures of business complex</Text>
 
                        <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
                               <RadioButton.Item label="First item" value="first" />

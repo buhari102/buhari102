@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/core';
 import {atom,useAtom} from 'jotai';
 import {emailAtom } from '../SignUpScreen/SignUpScreen';
 import { idAtom,tokenAtom } from '../SignInScreen/SignInScreen';
+import urls from '../../../API/urls';
 
 const ConfirmEmailScreen = () => {
   const [code, setCode] = useState('');
@@ -26,7 +27,7 @@ const ConfirmEmailScreen = () => {
   const onResendPress = () => {
     console.log('value ', email);
     
-    fetch('http://localhost:8080/api/user/re-send-code', {
+    fetch(urls.confirmEmailResend, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {
@@ -65,7 +66,7 @@ const ConfirmEmailScreen = () => {
     console.log("whats the state")
     
     console.log({id,code});
-    fetch('http://localhost:8080/api/user/userverify', {
+    fetch(urls.confirmEmail, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {

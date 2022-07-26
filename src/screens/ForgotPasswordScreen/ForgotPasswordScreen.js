@@ -5,6 +5,7 @@ import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/core';
 import {atom,useAtom} from 'jotai';
+import urls from '../../../API/urls';
 
 
 
@@ -19,7 +20,7 @@ const ForgotPasswordScreen = () => {
   
 
   const onSendPressed = () => {
-    fetch('http://localhost:8080/api/auth/request-pass', {
+    fetch(urls.forgotPasswordRequest, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {
@@ -58,7 +59,7 @@ const ForgotPasswordScreen = () => {
 
     console.log(veri);
     
-    fetch('http://localhost:8080/api/user/re-send-code', {
+    fetch(urls.forgotPasswordResend, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {

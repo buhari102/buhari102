@@ -6,6 +6,7 @@ import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import { veriAtom } from '../ForgotPasswordScreen/ForgotPasswordScreen';
 import {atom,useAtom} from 'jotai';
+import urls from '../../../API/urls';
 
 const NewPasswordScreen = () => {
   const [code, setCode] = useState('');
@@ -16,7 +17,7 @@ const NewPasswordScreen = () => {
   const navigation = useNavigation();
 
   const onSubmitPressed = () => {
-    fetch('http://localhost:8080/api/auth/reset-password-code', {
+    fetch(urls.newPasswordCode, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {

@@ -4,7 +4,8 @@ import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/core';
-import {atom,useAtom} from 'jotai'
+import {atom,useAtom} from 'jotai';
+import urls from '../../../API/urls';
 
 export const emailAtom = atom('');
 
@@ -54,7 +55,7 @@ const SignUpScreen = () => {
       return 
     }
 
-    fetch('http://localhost:8080/api/auth/sign-up/customer', {
+    fetch(urls.signupCustomer, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {
@@ -64,7 +65,7 @@ const SignUpScreen = () => {
       body: JSON.stringify({
         username: email,
         password: password,
-        password2: passwordRepeat
+        confirmPassword: passwordRepeat
 
       })
     })

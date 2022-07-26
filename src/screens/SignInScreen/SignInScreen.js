@@ -14,6 +14,7 @@ import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import {atom,useAtom} from 'jotai';
+import urls from '../../../API/urls';
 
 
 export const idAtom = atom('');
@@ -40,7 +41,7 @@ const SignInScreen = () => {
   const onSignInPressed = () => {
     // validate user
 
-    fetch('http://localhost:8080/api/auth/login', {
+    fetch(urls.login, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {

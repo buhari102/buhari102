@@ -10,7 +10,8 @@ import {
   SafeAreaView,
   StyleSheet,
   useWindowDimensions,
-  Alert
+  Alert,
+  Button
   
 } from 'react-native';
 import CustomInput from '../src/components/CustomInput';
@@ -19,6 +20,10 @@ import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import { tokenAtom } from '../src/screens/SignInScreen/SignInScreen';
 import { useForm } from "react-hook-form";
 import {atom,useAtom} from 'jotai';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
+
+import urls from '../API/urls';
 
 const ManagerInfoForm = () => {
   const [firstname, setFirstname] = useState('');
@@ -27,7 +32,9 @@ const ManagerInfoForm = () => {
   const [dob, setDob] = useState('');
   const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
-  const { register, handleSubmit } = useForm(); 
+  const { register, handleSubmit } = useForm();
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
 
   const [address, setAddress] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
@@ -37,11 +44,14 @@ const ManagerInfoForm = () => {
   const [token] = useAtom(tokenAtom);
   
 
-  const {height} = useWindowDimensions();
+  //const window = useWindowDimensions();
+  const windowW= Dimensions.get('window').width;
+  const windowH = Dimensions.get('window').height;
+
   const navigation = useNavigation();
 
   const onSubmitPress = () => {
-    fetch('http://localhost:8080/api/profile/', {
+    fetch(urls.managerForm, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {
@@ -129,17 +139,20 @@ const ManagerInfoForm = () => {
         />
         
         <CustomInput
-          placeholder="Date of birth(DD/MM/YY)"
+          placeholder="Date of birth(YY/MM/DD)"
           value={dob}
           setValue={setDob}
           
         />
-       
+
+
         <CustomInput
           placeholder="Gender(Male/Female)"
           value={gender}
           setValue={setGender}
         />
+
+      
         
         <CustomInput
           placeholder="Email address"
@@ -198,7 +211,8 @@ const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     padding: 20,
-    flex: 1
+    height: hp('60%'), // 70% of height device screen
+    width: wp('100%')
     
   },
   
@@ -218,6 +232,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     color: 'red'
   },
+  date: {
+    backgroundColor: 'white',
+    width: 345,
+    height: 55,
+    //width: '100%',
+    //height:'8%',
+    
+
+    borderColor: '#e8e8e8',
+    borderWidth: 1,
+    borderRadius: 5,
+
+    paddingHorizontal: 10,
+    marginVertical: 5,
+  }
 });
 
 export default ManagerInfoForm;

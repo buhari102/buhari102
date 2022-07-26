@@ -17,6 +17,7 @@ import CustomButton from '../src/components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 import {atom,useAtom} from 'jotai';
 import { tokenAtom } from '../src/screens/SignInScreen/SignInScreen';
+import urls from '../API/urls';
 
 const CustomerInfoForm = () => {
   const [firstname, setFirstname] = useState('');
@@ -32,7 +33,7 @@ const CustomerInfoForm = () => {
   const navigation = useNavigation();
 
   const onSubmitPress = () => {
-    fetch('http://localhost:8080/api/profile/', {
+    fetch(urls.customerForm, {
       method: 'POST',
       //mode: 'no-cors',
       headers: {

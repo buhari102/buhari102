@@ -1,46 +1,64 @@
 import * as React from 'react';
 import {View, Text, ScrollView, StyleSheet, Alert} from 'react-native';
-import { RadioButton } from 'react-native-paper';
+import { RadioButton, Button } from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
+import {atom,useAtom} from 'jotai';
+import { host1Atom } from './Host1';
+import CustomInput from '../../src/components/CustomInput';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-
+export const host12Atom = atom('');
 const Host12 = () => {
   const [value, setValue] = React.useState('first');
+  const [price, setPrice] = React.useState('');
+  const [type] = useAtom(host1Atom);
+  const [,setHost12Atom] = useAtom(host12Atom);
+  const navigation = useNavigation();
+
+  const onNextPress = () => {
+    setHost12Atom(value);
+      return navigation.navigate('Host14')
+  } 
+
+  const onBackPress = () => {
+      return navigation.navigate('Host9')
+  }
 
   return (
-      <ScrollView>
-          <Text style={{fontSize: 24, alignSelf: 'center'}}>What kind of place will you host?</Text>
+    <ScrollView>
+        <View style={styles.root}>
+        <Text style={{fontSize: 24, alignSelf: 'center'}}>Price of business complex</Text>
+        <Text style={{fontSize: 20, alignSelf: 'center'}}>Price for {type}</Text>
 
-         <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
-            <RadioButton.Item label="First item" value="first" />
-            <RadioButton.Item label="Second item" value="second" />
-            <RadioButton.Item label="Third item" value="third" />
-            <RadioButton.Item label="Fourth item" value="fourth" />
-            <RadioButton.Item label="Fifth item" value="fifth" />
-            <RadioButton.Item label="Sixth item" value="sixth" />
-         </RadioButton.Group>
-           <Button style={styles.buttona}  mode="contained" >
-            Next
-           </Button>
-  
-           <Button style={styles.buttonb}  mode="text" >
-            Back
-           </Button>
-      </ScrollView>
-   
-  );
+        <CustomInput
+          placeholder="Price of area/space"
+          value={price}
+          setValue={setPrice}
+        />
+
+
+                      <Button style={styles.buttona}  mode="contained" onPress={onNextPress} >
+                 Next
+               </Button>
+
+               <Button style={styles.buttonb}  mode="text" onPress={onBackPress} >
+                 Back
+               </Button>
+        </View>
+        
+    </ScrollView>
+ 
+);
 };
 
 const styles = StyleSheet.create({
-    buttona: {
-      position: 'fixed',
-      bottom: 0,
-      right: 0,
-    },
-    buttonb: {
-      position: 'fixed',
-      bottom: 0,
-      left: 0,
-    },
-  })
-
+ 
+  root: {
+    alignItems: 'center',
+    padding: 20,
+    height: hp('60%'), // 70% of height device screen
+    width: wp('100%')
+      
+    }
+})
 export default Host12;

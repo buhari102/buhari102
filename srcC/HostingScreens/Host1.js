@@ -2,32 +2,42 @@ import * as React from 'react';
 import {View, Text, ScrollView, StyleSheet, Alert} from 'react-native';
 import { RadioButton, Button } from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import {atom,useAtom} from 'jotai';
 
+export const host1Atom = atom('');
 
 const Host1 = () => {
   const [value, setValue] = React.useState('first');
+  const [,setHost1Atom] = useAtom(host1Atom);
   const navigation = useNavigation();
 
   const onNextPress = () => {
-      return navigation.navigate('Host2')
+    setHost1Atom(value);
+
+    if(value==="Shortstays") {
+      return navigation.navigate('Host3');
+    }
+    else {
+      return navigation.navigate('Host2');
+    }
+     
   } 
 
   const onBackPress = () => {
       return navigation.navigate('ManagerHome')
   }
 
+
   return (
       <ScrollView>
           <View style={styles.root}>
-          <Text style={{fontSize: 24, alignSelf: 'center'}}>What kind of place will you host?</Text>
+          <Text style={{fontSize: 24, alignSelf: 'center'}}>Purpose of your place</Text>
 
                          <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
-                                <RadioButton.Item label="First item" value="first" />
-                                <RadioButton.Item label="Second item" value="second" />
-                                <RadioButton.Item label="Third item" value="third" />
-                                <RadioButton.Item label="Fourth item" value="fourth" />
-                                <RadioButton.Item label="Fifth item" value="fifth" />
-                          <RadioButton.Item label="Sixth item" value="sixth" />
+                                <RadioButton.Item label="Shortstays" value="Shortstays" />
+                                <RadioButton.Item label="Rent" value="Rent" />
+                                <RadioButton.Item label="Selling" value="Selling" />
+                                
                         </RadioButton.Group>
 
 
